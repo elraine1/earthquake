@@ -182,9 +182,9 @@ $(document).ready(function(){
 		</div>
 		
 		<div id="sns_wrap">
-			<h3>&nbsp; ABC </h3><hr>
+			<h3>&nbsp; ABCDEFG </h3><hr>
 			<table id="snsTable">
-				<tr><td><h3>아직은 내용이 없습니다!</h3></td></tr>
+				<tr><td><h3>컨텐츠 부족!</h3></td></tr>
 			</table>
 		</div>
 		
