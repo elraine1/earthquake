@@ -66,9 +66,13 @@ a:link{
 	margin-top: 5px;
 }
 
+#btnTable, #btnTable td, #btnTable tr{
+	margin: 0;
+}
+
 #eqkList{
 	width: 90%;
-	height: 650px;
+	height: 640px;
 	margin: 0 auto;
 	margin-bottom: 10px;
 /*	border: 1px dashed red; */

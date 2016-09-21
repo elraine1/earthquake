@@ -135,9 +135,9 @@ function addMarker(index){
 	var myTitle = "- 지진 발생 일시 -\n"; 
 		myTitle += tmEqk + "\n";
 		myTitle += "[No." + eqkMapList[index]['num'] + "]" + "[M" + mt + "]";
-	var myLabel = (eqkMapList[index]['num'] % 10).toString();
+//	var myLabel = (eqkMapList[index]['num'] % 10).toString();
 //	var myLabel = labels.substr((index % (labels.length)),1);
-	
+	var myLabel = Math.round(mt,0).toString();
 	var marker = new google.maps.Marker({
 		position: myLatlng,
 		label: myLabel,
@@ -195,7 +195,6 @@ function deleteMarkers() {
 }
 
 function setMapOnMarker(index){
-	
 	clearMarkers();
 	markers[index].setMap(map);
 }
@@ -207,10 +206,6 @@ function setMapOnAllCircles(map){
 	for(var i=0; i < circles.length; i++){
 		circles[i].setMap(map);
 	}
-}
-
-function showCirclesWithTimeout(){
-	setMapOnAllCircles(map);
 }
 
 function showCircles(){

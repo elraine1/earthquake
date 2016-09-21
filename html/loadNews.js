@@ -1,8 +1,5 @@
-$(document).ready(function(){
-	
-//	$("#").load();
-	$("#menu").load("/template/menu.php");
-	$("#footer_div").load("/template/footer.php");
+
+function loadNews(){
 	
 	var newsList = [];
 	var url = "news_proxy.php";
@@ -47,65 +44,4 @@ $(document).ready(function(){
 		},
 		timeout : 3000
 	});	
-	
-	
-	$("#showAllMarkers").click(function(){
-		clearMarkers();
-		clearCircles();
-	
-		if($("#optShowGradually").is(":checked")){
-			$("#stopTimerBtn").attr("disabled", false);
-			
-			var timeout;
-			var index;
-			for(var i = 0; i < eqkMapList.length; i++){
-				//index = eqkMapList.length - i - 1;
-				index = i;
-				timeout = i * 500;
-				timers.push(window.setTimeout(function(index){
-					setMapOnMarker(index);
-					setMapOnCircle(index);
-				}.bind(this, index), timeout));
-			}
-			
-		}else{
-			showMarkers();
-			showCircles();
-		}
-	});
-	
-	$("#hideAllMarkers").click(function(){
-		clearTimeoutAll();
-		clearMarkers();
-		clearCircles();
-	});
-	
-	$("#eqkListbox").change(function(){
-		var index = parseInt($(this).val());		
-		setMapOnMarker(index);
-		setMapOnCircle(index);
-	});
-	
-	$("#selectYear").change(function(){
-		clearTimeoutAll();
-		deleteMarkers();
-		deleteCircles();
-			
-		$("#stopTimerBtn").attr("disabled", true);
-		
-		var fileName = $(this).val() + ".txt";
-		
-		dataLoad(fileName);
-		initListboxItem();	
-		makeMarkers();
-		makeCircles();
-	});
-	
-	$("#stopTimerBtn").click(function(){
-		clearTimeoutAll();
-		clearMarkers();
-		clearCircles();
-		
-		$("#stopTimerBtn").attr("disabled", true);
-	});
-});
+}
