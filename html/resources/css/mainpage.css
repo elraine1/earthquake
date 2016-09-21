@@ -1,21 +1,44 @@
 html, body { height: 100%; margin: 0; padding: 0; }
 
+a:link{
+	text-decoration: none;
+}
+
 .thick_hr{   
+	width: 100%;
 	height: 4px;
+	margin: 5px 0px;
 	border: 1px solid black;
 	background-color: black;
 	
 }
 
 .thin_hr{   
+	width: 98%;
 	height: 1px;
+	margin: 3px 0px;
 	border: 1px solid salmon;
 	background-color: salmon;
 }
 
+#site_title{
+	background-image: url("/resources/images/earthquake.png");
+	background-repeat: no-repeat;
+	background-position: left top;
+	background-size: contain;
+}
+
+#site_title > h2{
+	margin: 0px;
+	padding: 5px 0px 10px 0px;
+	vertical-align: middle;
+	font-size: 32px;
+}
+
+
 #content_wrap{
 	width: 100%;
-	height: 800px;
+	height: 700px;
 	margin: 0 auto;
 }
 
@@ -45,7 +68,7 @@ html, body { height: 100%; margin: 0; padding: 0; }
 
 #eqkList{
 	width: 90%;
-	height: 750px;
+	height: 650px;
 	margin: 0 auto;
 	margin-bottom: 10px;
 /*	border: 1px dashed red; */
@@ -80,6 +103,14 @@ html, body { height: 100%; margin: 0; padding: 0; }
 	width: 97%;
 	height: 440px;
 	margin-left: 1%;
+	margin-bottom: 20px;
+}
+
+
+#community_wrap h3{
+	font-size: 16px;
+	margin: 5px 0px;
+	
 }
 
 #community_wrap td, tr{
@@ -98,11 +129,6 @@ html, body { height: 100%; margin: 0; padding: 0; }
 	padding: 0px 5px;
 	font-family: "Nanum Gothic", "맑은 고딕", "Malgun Gothic", Georgia, Serif;
 	font-size: 13px;
-}
-
-#community_wrap h3{
-	font-size: 16px;
-	margin: 5px 0px;
 }
 
 
@@ -142,7 +168,7 @@ html, body { height: 100%; margin: 0; padding: 0; }
 #footer_div{
 	clear: both;
 	width: 100%;
-	height: 80px;
+	height: 110px;
 	margin-top: 10px;
 	
 	border: 2px dotted salmon;
