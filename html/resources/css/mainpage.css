@@ -138,10 +138,11 @@ a:link{
 #comments{
 	
 	width: 98%;
-	height: 200px; 
+	height: 250px; 
 	margin-left: 1%;
-	border: 1px solid LightSlateGray 
-
+	border: 1px solid LightSlateGray;
+	overflow: auto;
+	
 }
 
 .tdNewsTitle a:link{

@@ -194,8 +194,11 @@ $(document).ready(function(){
 	
 	<br>
 	<div id="comments">
-	
-
+	<?php
+		
+		
+		
+	?>
 	</div>
 	
 	
