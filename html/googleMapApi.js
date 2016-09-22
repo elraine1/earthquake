@@ -64,6 +64,7 @@ function initMap() {
 	var myLatlng = new google.maps.LatLng(eqkMapList[0]['lat'], eqkMapList[0]['lon']);
 	map = new google.maps.Map(document.getElementById('map'), {
 		center: myLatlng,
+		mapTypeId: google.maps.MapTypeId.HYBRID,
 		zoom: 8
 	});
 	

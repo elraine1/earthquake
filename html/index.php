@@ -138,10 +138,11 @@ $(document).ready(function(){
 						<td>
 							자료 선택
 							<select id="selectYear">
-								<option value="2016" selected>2016</option>
-								<option value="2015" >2015</option>
-								<option value="2014" >2014</option>
-								<option value="2013" >2013</option>
+							<?php 
+								for($i=0; $i<10; $i++){
+									printf("<option value='%d'>%d</option>", date("Y")-$i, date("Y")-$i);
+								}
+							?>
 							</select>
 						</td>
 						<td>
@@ -184,9 +185,15 @@ $(document).ready(function(){
 		<div id="sns_wrap">
 			<h3>&nbsp; ABCDEFG </h3><hr>
 			<table id="snsTable">
-				<tr><td><h3>컨텐츠 부족!</h3></td></tr>
+				<tr><td><h3>개발 중..</h3></td></tr>
 			</table>
 		</div>
+		
+	</div>
+	
+	<br>
+	<div id="comments">
+		
 		
 	</div>
 	
