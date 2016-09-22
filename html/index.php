@@ -87,6 +87,7 @@ $(document).ready(function(){
 	$("#optShowGradually").change(function(){
 		if($(this).is(":checked") == true){
 			$("#optTimeSequence").attr("disabled", false);
+			document.getElementById("optTimeSequence")
 		}else{
 			$("#optTimeSequence").attr("disabled", true);
 		}
@@ -193,9 +194,10 @@ $(document).ready(function(){
 	
 	<br>
 	<div id="comments">
-		
-		
+	
+
 	</div>
+	
 	
 	<div id="footer_div"></div>
 	</body>
