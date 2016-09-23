@@ -94,11 +94,97 @@ $(document).ready(function(){
 	});
 	
 	
+	//// 댓글작성 미완성
+	$("#commentWriteBtn").click(function(){
+		if(commentContentsVerify()){
+			var url = $("#comment_write_form").attr('action');
+			var writer = $("#txtWriter").val();
+			var cmt = $("#txtComment").val();
+			
+			$.ajax({
+				async: false,
+				url: url,
+				type: "POST",
+				data: {writer: writer, comment: cmt, count: 30},
+				dataType: 'json',
+				success: function(data){
+					fillCommentTable(data);						
+				},				
+				error: function(xhr){
+					alert(xhr.requestText);
+				},
+				timeout: 3000			
+			});			
+		}
+		
+	});
+	
+	
+	var getCommentUrl = "board/comment_get.php";
+	$.ajax({
+		async:false,
+		url: getCommentUrl,
+		type: "POST",
+		data: {count: 30},
+		dataType: 'json',
+		success:function(data){
+			fillCommentTable(data);			
+		},
+		error: function(xhr){
+			alert(xhr.requestText);
+		}
+	})
+	
+	
+	/*
+	$("").click(function(){
+		
+	});
+	*/
+	
 });
+
+function commentContentsVerify(){
+	var writer = $("#txtWriter").val();
+	// 적합성 검사 추가 할 것. 09.24.
+	if(writer == 'admin'){
+		alert("작성자명은 'admin'으로 만들 수 없습니다.");
+		return false;
+	}else if(writer.length > 255){
+		alert("글자수 제한은 255자 입니다.");
+		return false;
+	}else{
+		return true;
+	}
+}
+
+function fillCommentTable(comments){
+	var comment_table = $("#comment_table");
+	var tableHtml="";
+	$.each(comments, function(key, val){
+		tableHtml += "<tr><td class='tdWriter2'><b>" + val.comment_writer + "</b><br></td>";
+		tableHtml += "<td class='tdComment2'><span>" + val.comment_contents + "</span></td>";
+		tableHtml += "<td class='tdButton'><input type='button' class='commentBtn' value='버튼1' onclick='commentBtnClick()'><br>";
+		tableHtml += "					   <input type='button' class='commentBtn' value='버튼2' onclick='commentBtnClick()'></td>";
+		tableHtml += "<td class='tdCommentDate'><span class='spanCommentDate'>" + val.comment_date + "</span></td></tr>";
+	});
+	comment_table.empty();
+	comment_table.append(tableHtml);
+}
+
+function commentBtnClick(){
+	alert('아직은 아무 기능이 없어요!');
+}
+
 </script>
 </head>
 
 <body>
+	<?php
+		$mylib_path = $_SERVER['DOCUMENT_ROOT'] . '/../includes/mylib.php';
+		require_once($mylib_path);
+	?>
+
 	<hr class="thick_hr">
 	<div id="site_title">
 		<h2>&nbsp; &nbsp; &nbsp; 대한민국 지진 지도</h2>
@@ -174,82 +260,85 @@ $(document).ready(function(){
 			</fieldset>
 		</div>
 	</div>
-	<hr class="thin_hr">
-	<br>
-	<div id="community_wrap">
-			
-		<div id="news_wrap">
-			<h3>&nbsp; 지진 관련 기사</h3><hr>
-			<table id="newsTable"></table>
-		</div>
-		
-		<div id="sns_wrap">
-			<h3>&nbsp; ABCDEFG </h3><hr>
-			<table id="snsTable">
-				<tr><td><h3>개발 중..</h3></td></tr>
-			</table>
-		</div>
-		
-	</div>
-	
-	<br>
-	<div id="wrapper_row3">
-	
-		<div id="comment_wrap">
-			<h3>&nbsp; 방명록</h3>
-			<hr>
-			<div id="comment_table_wrap">
-				DB Connect Test.. <br>
-				<?php 
-					$mylib_path = $_SERVER['DOCUMENT_ROOT'] . '/../includes/mylib.php';
+	<hr class="thin_hr">	
+	<div id="wrapper_row2">
+		<div id="row2_contents_wrap">
 					
-					require_once($mylib_path);
-					
-					echo "<b>" . get_connection_check() . "</b><br>";
-				
-				
-				?>
+			<div id="news_wrap">
+				<h3>&nbsp; 지진 관련 기사</h3><hr>
+				<table id="newsTable"></table>
+			</div>
 			
-			
-			
-				<table>
-					<tr>
-						<td>username<br>
-							</td>
-						<td>content:<span>AbraCadabra</span></td>
-						<td><input type="button" id="commentModifyBtn" value="수정">
-							<input type="button" id="commentDeleteBtn" value="삭제"></td>
-					</tr>
-					<tr>
-						<td></td>
-						<td></td>
-						<td></td>
-					</tr>
-					
-					
+			<div id="sns_wrap">
+				<h3>&nbsp; ABCDEFG </h3><hr>
+				<table id="snsTable">
+					<tr><td><h3>공사 중..</h3></td></tr>
 				</table>
 			</div>
-			<hr>
-			<div id="comment_write_div">
-				<form action="#" method="POST">
-					<table>
-						<tr>
-							<td align="center" class="tdUsername"><span>username</span><br>
-								<input type="text" name="username" size='12' value=""></td>
-							<td class="tdComment"><div class="textwrapper"><textarea id="comment" rows='3' cols=''>내용 입력.</textarea></div></td>
-							<td align="center" class="tdButton"><input type='button' value='작성완료'> <br>
-								<input type='reset' value='취소'> </td>
-						</tr>
-					</table>
-				</form>
+			
+		</div>
+	</div>
+	
+	<hr class="thin_hr">
+	<div id="wrapper_row3">
+		<div id="row3_contents_wrap">
+			
+			<div id="comment_wrap">
+				<h3>&nbsp; 방명록<span style='font-size: 12px'>(아무 말이나 편하게 써주세요! 단, 비속어는 자제바랍니다! [400자 제한])<span></h3>
+				<hr>
+					<div id="comment_table_wrap">
+						<table id="comment_table"></table>
+					</div>
+				<hr>
+				<div id="comment_write_div">
+					<form action="board/comment_write.php" id="comment_write_form" method="POST">
+						<table>
+							<tr>
+								<td align="center" class="tdWriter">
+									<span style="font-family: 'Nanum gothic'; font-size: 14px;"><b>Writer<b></span><br>
+									<input type="text" id="txtWriter" size='20' value="" maxlength='20' placeholder="아이디 입력">
+								</td>
+								<td class="tdComment">
+									<div class="textwrapper"><textarea id="txtComment" rows='3' placeholder="내용 입력"></textarea></div>
+								</td>
+								<td align="center" class="tdButton">
+									<input type='button' class='commentBtn' id="commentWriteBtn" value="작성완료" 
+										onclick="commentContentsVerify()"><br>
+									<input type='reset' class='commentBtn' value='취소'>
+								</td>
+							</tr>
+						</table>
+					</form>
+				</div>
+			</div>
+			
+			<div id="site_link_wrap">
+				<h3>&nbsp; 관련 사이트</h3>
+				<hr>
+				<div id="banner_wrap">
+				<table>
+					<tr>
+						<td><a href="http://www.kma.go.kr/weather/earthquake_volcano/report.jsp">
+							<img src='/resources/images/banner/banner_earthquake_kma.gif' width='100px' height='40px'></a></td>
+						<td><a href="https://twitter.com/kma_earthquake"> 
+							<img src='/resources/images/banner/banner_earthquake_twitter.png' width='100px' height='40px'></a></td>
+					</tr>
+					<tr>
+						<td><a href="http://www.safekorea.go.kr/idsiSFK/index.jsp"> 
+							<img src='/resources/images/banner/banner_earthquake_NDIC.png' width='100px' height='40px'></a></td>
+						<td><a href="https://quake.kigam.re.kr/"> 
+							<img src='/resources/images/banner/banner_earthquake_KERC.png' width='100px' height='40px'></a></td>
+					</tr>
+					<tr>
+						<td><a href="http://gall.dcinside.com/board/lists/?id=jijinhee">
+							<img src='/resources/images/banner/banner_earthquake_jijinhee.png' width='100px' height='40px'></a></td>
+						<td><a href="http://www.jma.go.jp/jp/quake/">
+							<img src='/resources/images/banner/banner_earthquake_japan.png' width='100px' height='40px'></a></td>
+					</tr>
+				</table>	
+				<div>
 			</div>
 		</div>
-		
-		<div id="site_link_wrap">
-			
-			
-		</div>
-		
 	</div>
 	
 	<div id="footer_div"></div>

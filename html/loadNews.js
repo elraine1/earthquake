@@ -8,7 +8,7 @@ function loadNews(){
 		type: "POST",
 		async: false,
 		url: url,
-		data: {query:'지진', target:'news'},
+		data: {query:'지진', target:'news', count: 10},
 		success: function(result){
 //			alert(result);
 			var xml = $(result);

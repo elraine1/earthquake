@@ -84,7 +84,6 @@ a:link{
 }
 
 
-
 #youtube_wrap{
 	width: 100%;
 	height: 450px;
@@ -104,55 +103,67 @@ a:link{
 	float: left;	
 }
 
-#community_wrap{
-	width: 97%;
-	height: 440px;
-	margin-left: 1%;
-	margin-bottom: 20px;
-}
 
-#community_wrap h3{
+/*                 ROW 2            */ 
+
+#wrapper_row2 h3{
 	font-size: 16px;
 	margin: 5px 0px;
-	
 }
 
-#community_wrap td, tr{
+#wrapper_row2{
+	width: 100%;
+	height: 450px;
+	margin: 0 auto;
+}
+
+#row2_contents_wrap{
+	width: 100%-40px;
+	height: 100%-20px;
+	margin: 10px 20px;
+}
+
+#td, tr{
 	margin: 0 auto;
 	padding: 0;
-	border-spacing: 0px;
 }
 
 #news_wrap, #sns_wrap{
 	width: 48%;
-	height: 100%;
+	height: 430px;
+	margin: 0px 10px;
 	border: 1px solid darkgray;
 	float: left;
 	
-	margin: 0px 5px;
-	padding: 0px 5px;
 	font-family: "Nanum Gothic", "맑은 고딕", "Malgun Gothic", Georgia, Serif;
 	font-size: 13px;
 	overflow: auto;
 }
 
 
-#wrapper_row3{
-	width: 100%;
-	height: 450px;
-	margin-left: 1%;
-	margin-bottom: 20px;
-}
-
+/*                 ROW 3            */ 
 #wrapper_row3 h3{
 	font-size: 16px;
 	margin: 5px 0px;
-	
 }
 
-#comment_wrap{
+#wrapper_row3{
+	width: 100%;
+	height: 480px;
+	margin: 0 auto;
+	margin-bottom: 20px;
+}
+#row3_contents_wrap{
+	width: 100%-40px;
+	height: 480px;
+	margin: 10px 20px;
+}
+
+
+#comment_wrap, #site_link_wrap{
 	width: 48%;
 	height: 100%;
+	margin: 10px;
 	float: left;
 	font-family: "Nanum Gothic", "맑은 고딕", "Malgun Gothic", Georgia, Serif;
 	
@@ -161,7 +172,7 @@ a:link{
 
 #comment_table_wrap{
 	width: 100% - 10px;
-	height: 320px;
+	height: 350px;
 	border: 1px solid darkgray;
 	
 	margin: 0px 5px;
@@ -169,10 +180,21 @@ a:link{
 	overflow: auto;
 }
 
+#comment_table{
+	width: 100%;
+}
+
+
+#comment_table td {
+	border: 1px solid black;
+}
+
+
+
 #comment_write_div{
 	width: 100% - 10px;
 	height: 60px;
-	margin: 0px 5px;
+	margin: 5px 5px 10px 5px;
 	border: 1px solid darkgray;
 }
 
@@ -180,34 +202,60 @@ a:link{
 	width: 100%;
 }
 
-#comment_write_b
-
-
-.textwrapper{
-	width: 100%;
-/*	border: 1px solid #999999; */
-	margin: 2px 0;
-	padding: 3px;
+#banner_wrap{
+	margin: 10px;
+	float: left;
+	font-family: "Nanum Gothic", "맑은 고딕", "Malgun Gothic", Georgia, Serif;
 }
+
+#banner_wrap  td {
+	border: 1px solid black;
+	border-spacing: 2px;
+	border-collapse: collapse;
+}
+
+
+/* class */
 
 textarea{
 	width: 100%;
 	margin: 0 auto;
 }
 
-.tdUsername{
+.textwrapper{
+	width: 100%;
+	margin: 2px 0px;
+	padding: 3px;
+}
+
+.tdWriter{
 	width: 120px;
+}
+
+.tdWriter2{
+	width: 100px;
 }
 
 .tdComment{
 	width: 100% - 200px;
 }
 
+.tdComment2{
+	min-width: 300px;
+}
+
 .tdButton{
-	padding-left: 5px;
+	width: 80px;
+	text-align: center;
+}
+
+.tdCommentDate{
 	width: 80px;
 }
 
+.spanCommentDate{
+	font-size: 12px;
+}
 
 
 
@@ -242,6 +290,17 @@ textarea{
 	padding-right: 10px;
 	display: inline-block;
 }
+
+td > .commentBtn{
+	width: 60px;
+	height: 23px;
+	padding: 3px 0px ;
+	border-radius: 5px;
+	font-family: "Nanum Gothic";
+	font-weight: bold;
+	font-size: 13px;
+}
+
 
 
 #footer_div{

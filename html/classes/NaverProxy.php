@@ -1,14 +1,14 @@
 <?php
 class NaverProxy {
    
-	public function queryNaver($query, $target) {
+	public function queryNaver($query, $target, $count) {
 		
 		$query = urlencode($query);
 		$client_id = "8Ny6rP3G_PTWygdJV2pO";
 		$client_secret = "pIexCDAT0b";
 
 		$url = "https://openapi.naver.com/v1/search/".$target.".xml";		
-		$url = sprintf("%s?query=%s&display=6", $url, $query);
+		$url = sprintf("%s?query=%s&display=10", $url, $query);
 		$is_post = false;
 		
 		$ch = curl_init();
