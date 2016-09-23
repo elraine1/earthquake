@@ -8,7 +8,7 @@ class NaverProxy {
 		$client_secret = "pIexCDAT0b";
 
 		$url = "https://openapi.naver.com/v1/search/".$target.".xml";		
-		$url = sprintf("%s?query=%s&display=5", $url, $query);
+		$url = sprintf("%s?query=%s&display=6", $url, $query);
 		$is_post = false;
 		
 		$ch = curl_init();

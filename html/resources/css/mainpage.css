@@ -10,15 +10,16 @@ a:link{
 	margin: 5px 0px;
 	border: 1px solid black;
 	background-color: black;
-	
 }
 
 .thin_hr{   
 	width: 98%;
 	height: 1px;
-	margin: 3px 0px;
+	margin: 3px 0.5%; 
 	border: 1px solid salmon;
 	background-color: salmon;
+
+	
 }
 
 #site_title{
@@ -110,7 +111,6 @@ a:link{
 	margin-bottom: 20px;
 }
 
-
 #community_wrap h3{
 	font-size: 16px;
 	margin: 5px 0px;
@@ -133,17 +133,83 @@ a:link{
 	padding: 0px 5px;
 	font-family: "Nanum Gothic", "맑은 고딕", "Malgun Gothic", Georgia, Serif;
 	font-size: 13px;
+	overflow: auto;
 }
 
-#comments{
-	
-	width: 98%;
-	height: 250px; 
+
+#wrapper_row3{
+	width: 100%;
+	height: 450px;
 	margin-left: 1%;
-	border: 1px solid LightSlateGray;
-	overflow: auto;
+	margin-bottom: 20px;
+}
+
+#wrapper_row3 h3{
+	font-size: 16px;
+	margin: 5px 0px;
 	
 }
+
+#comment_wrap{
+	width: 48%;
+	height: 100%;
+	float: left;
+	font-family: "Nanum Gothic", "맑은 고딕", "Malgun Gothic", Georgia, Serif;
+	
+	border: 1px solid darkgray;
+}
+
+#comment_table_wrap{
+	width: 100% - 10px;
+	height: 320px;
+	border: 1px solid darkgray;
+	
+	margin: 0px 5px;
+	font-size: 13px;
+	overflow: auto;
+}
+
+#comment_write_div{
+	width: 100% - 10px;
+	height: 60px;
+	margin: 0px 5px;
+	border: 1px solid darkgray;
+}
+
+#comment_write_div table {
+	width: 100%;
+}
+
+#comment_write_b
+
+
+.textwrapper{
+	width: 100%;
+/*	border: 1px solid #999999; */
+	margin: 2px 0;
+	padding: 3px;
+}
+
+textarea{
+	width: 100%;
+	margin: 0 auto;
+}
+
+.tdUsername{
+	width: 120px;
+}
+
+.tdComment{
+	width: 100% - 200px;
+}
+
+.tdButton{
+	padding-left: 5px;
+	width: 80px;
+}
+
+
+
 
 .tdNewsTitle a:link{
 /*	width:70%; */

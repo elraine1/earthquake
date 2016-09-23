@@ -193,15 +193,75 @@ $(document).ready(function(){
 	</div>
 	
 	<br>
-	<div id="comments">
-	<?php
-		
-		
-		
-	?>
-	</div>
+	<div id="wrapper_row3">
 	
+		<div id="comment_wrap">
+			<h3>&nbsp; 방명록</h3>
+			<hr>
+			<div id="comment_table_wrap">
+				DB Connect Test.. <br>
+				<?php 
+					$mylib_path = $_SERVER['DOCUMENT_ROOT'] . '/../includes/mylib.php';
+					
+					require_once($mylib_path);
+					
+					echo "<b>" . get_connection_check() . "</b><br>";
+				
+				
+				?>
+			
+			
+			
+				<table>
+					<tr>
+						<td>username<br>
+							</td>
+						<td>content:<span>AbraCadabra</span></td>
+						<td><input type="button" id="commentModifyBtn" value="수정">
+							<input type="button" id="commentDeleteBtn" value="삭제"></td>
+					</tr>
+					<tr>
+						<td></td>
+						<td></td>
+						<td></td>
+					</tr>
+					
+					
+				</table>
+			</div>
+			<hr>
+			<div id="comment_write_div">
+				<form action="#" method="POST">
+					<table>
+						<tr>
+							<td align="center" class="tdUsername"><span>username</span><br>
+								<input type="text" name="username" size='12' value=""></td>
+							<td class="tdComment"><div class="textwrapper"><textarea id="comment" rows='3' cols=''>내용 입력.</textarea></div></td>
+							<td align="center" class="tdButton"><input type='button' value='작성완료'> <br>
+								<input type='reset' value='취소'> </td>
+						</tr>
+					</table>
+				</form>
+			</div>
+		</div>
+		
+		<div id="site_link_wrap">
+			
+			
+		</div>
+		
+	</div>
 	
 	<div id="footer_div"></div>
 	</body>
 </html>
+
+
+
+
+
+
+
+
+
+
