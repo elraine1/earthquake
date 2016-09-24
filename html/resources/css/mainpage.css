@@ -83,13 +83,21 @@ a:link{
 	width:100%;
 }
 
+/**  wrapper row 1 **/
 
-#youtube_wrap{
+#wrapper_row1{
 	width: 100%;
 	height: 450px;
-	margin-left: 1%;
+	margin: 0 auto;
+	margin-bottom: 20px;
 	clear: both;	
 }
+#row1_contents_wrap{
+	width: 100%-40px;
+	height: 100%-20px;
+	margin: 10px 20px;
+}
+
 
 
 .youtube_fieldset{
@@ -97,10 +105,11 @@ a:link{
 }
 
 .youtube_content{
-	width: 48%;
-	height: 95%;
-	margin-right: 5px;
-	float: left;	
+	width: 47%;
+	height: 430px;
+	margin: 0px 10px;
+	float: left;
+	font-size: 13px;
 }
 
 
@@ -129,7 +138,7 @@ a:link{
 }
 
 #news_wrap, #sns_wrap{
-	width: 48%;
+	width: 47%;
 	height: 430px;
 	margin: 0px 10px;
 	border: 1px solid darkgray;
@@ -149,19 +158,19 @@ a:link{
 
 #wrapper_row3{
 	width: 100%;
-	height: 480px;
+	height: 500px;
 	margin: 0 auto;
 	margin-bottom: 20px;
 }
 #row3_contents_wrap{
 	width: 100%-40px;
-	height: 480px;
+	height: 500px;
 	margin: 10px 20px;
 }
 
 
 #comment_wrap, #site_link_wrap{
-	width: 48%;
+	width: 47%;
 	height: 100%;
 	margin: 10px;
 	float: left;
@@ -193,9 +202,9 @@ a:link{
 
 #comment_write_div{
 	width: 100% - 10px;
-	height: 60px;
+	height: 70px;
 	margin: 5px 5px 10px 5px;
-	border: 1px solid darkgray;
+	border: 2px solid black;
 }
 
 #comment_write_div table {
@@ -225,7 +234,7 @@ textarea{
 .textwrapper{
 	width: 100%;
 	margin: 2px 0px;
-	padding: 3px;
+	padding: 5px;
 }
 
 .tdWriter{
@@ -233,6 +242,7 @@ textarea{
 }
 
 .tdWriter2{
+	min-width: 80px;
 	width: 100px;
 }
 
@@ -293,12 +303,13 @@ textarea{
 
 td > .commentBtn{
 	width: 60px;
-	height: 23px;
+	height: 20px;
 	padding: 3px 0px ;
-	border-radius: 5px;
+	border-radius: 3px;
+	vertical-align: center;
 	font-family: "Nanum Gothic";
 	font-weight: bold;
-	font-size: 13px;
+	font-size: 11px;
 }
 
 

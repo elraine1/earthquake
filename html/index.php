@@ -146,17 +146,22 @@ $(document).ready(function(){
 
 function commentContentsVerify(){
 	var writer = $("#txtWriter").val();
+	var txt = $("#txtComment").val();
 	// 적합성 검사 추가 할 것. 09.24.
-	if(writer == 'admin'){
-		alert("작성자명은 'admin'으로 만들 수 없습니다.");
-		return false;
-	}else if(writer.length > 255){
-		alert("글자수 제한은 255자 입니다.");
-		return false;
+	if (writer == 'admin'){	
+		alert("작성자명은 'admin'으로 만들 수 없습니다!"); return false;
+	}else if(writer.length < 3){
+		alert("작성자명은 3자 이상 작성해주세요!"); return false;
+	}else if(txt.length < 5){
+		alert("내용은 5자 이상 작성해주세요!"); return false;
+	}else if (txt.length > 400){	
+		alert("글자수 제한은 400자 입니다!");	return false;
 	}else{
 		return true;
 	}
 }
+
+
 
 function fillCommentTable(comments){
 	var comment_table = $("#comment_table");
@@ -173,7 +178,7 @@ function fillCommentTable(comments){
 }
 
 function commentBtnClick(){
-	alert('아직은 아무 기능이 없어요!');
+	alert('아직은 기능이 없어요!');
 }
 
 </script>
@@ -233,7 +238,7 @@ function commentBtnClick(){
 							</select>
 						</td>
 						<td>
-							<input type="checkbox" id="optTimeSequence" disabled>시간순(1월 -> 12월)
+							<input type="checkbox" id="optTimeSequence" disabled>시간순(1월->12월)
 						</td>
 					</tr>
 				</table>
@@ -244,20 +249,21 @@ function commentBtnClick(){
 	</div>
 	<br>
 	<hr class="thin_hr">
-	<div id="youtube_wrap">
+	<div id="wrapper_row1">
+		<div id="row1_contents_wrap">
+			<div class="youtube_content">
+				<fieldset class="youtube_fieldset">
+					<legend>한국 지진 실시간 중계</legend>
+					<iframe width="100%" height="95%" class="wiki-youtube" src="//www.youtube.com/embed/LqpjAhmhXcQ" frameborder="0" allowfullscreen=""></iframe>
+				</fieldset>
+			</div>
 		
-		<div class="youtube_content">
-			<fieldset class="youtube_fieldset">
-				<legend>한국 지진 실시간 중계</legend>
-				<iframe width="100%" height="95%" class="wiki-youtube" src="//www.youtube.com/embed/LqpjAhmhXcQ" frameborder="0" allowfullscreen=""></iframe>
-			</fieldset>
-		</div>
-		
-		<div class="youtube_content">
-			<fieldset class="youtube_fieldset">
-				<legend>일본 지진 실시간 중계</legend>
-				<iframe width="100%" height="95%" class="wiki-youtube" src="//www.youtube.com/embed/qmu8zrllUUI" frameborder="0" allowfullscreen=""></iframe>
-			</fieldset>
+			<div class="youtube_content">
+				<fieldset class="youtube_fieldset">
+					<legend>일본 지진 실시간 중계</legend>
+					<iframe width="100%" height="95%" class="wiki-youtube" src="//www.youtube.com/embed/qmu8zrllUUI" frameborder="0" allowfullscreen=""></iframe>
+				</fieldset>
+			</div>
 		</div>
 	</div>
 	<hr class="thin_hr">	
@@ -284,7 +290,7 @@ function commentBtnClick(){
 		<div id="row3_contents_wrap">
 			
 			<div id="comment_wrap">
-				<h3>&nbsp; 방명록<span style='font-size: 12px'>(아무 말이나 편하게 써주세요! 단, 비속어는 자제바랍니다! [400자 제한])<span></h3>
+				<h3>&nbsp; 방명록<span style='font-size: 12px'>(아무 말이나 편하게 써주세요! 단, 비속어는 자제바랍니다! [최소 5자, 400자 제한])<span></h3>
 				<hr>
 					<div id="comment_table_wrap">
 						<table id="comment_table"></table>
@@ -294,16 +300,15 @@ function commentBtnClick(){
 					<form action="board/comment_write.php" id="comment_write_form" method="POST">
 						<table>
 							<tr>
-								<td align="center" class="tdWriter">
-									<span style="font-family: 'Nanum gothic'; font-size: 14px;"><b>Writer<b></span><br>
-									<input type="text" id="txtWriter" size='20' value="" maxlength='20' placeholder="아이디 입력">
+								<td align="center" class="tdWriter" align='center'>
+									<b>Writer<span style='font-size: 12px'>[최소 3자]</span></b><br>
+									<input type="text" id="txtWriter" size='14' value="" maxlength='20' placeholder="아이디 입력">
 								</td>
 								<td class="tdComment">
 									<div class="textwrapper"><textarea id="txtComment" rows='3' placeholder="내용 입력"></textarea></div>
 								</td>
 								<td align="center" class="tdButton">
-									<input type='button' class='commentBtn' id="commentWriteBtn" value="작성완료" 
-										onclick="commentContentsVerify()"><br>
+									<input type='button' class='commentBtn' id="commentWriteBtn" value="작성완료" ><br>
 									<input type='reset' class='commentBtn' value='취소'>
 								</td>
 							</tr>
@@ -313,7 +318,7 @@ function commentBtnClick(){
 			</div>
 			
 			<div id="site_link_wrap">
-				<h3>&nbsp; 관련 사이트</h3>
+				<h3>&nbsp; 관련 사이트 링크</h3>
 				<hr>
 				<div id="banner_wrap">
 				<table>
