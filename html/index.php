@@ -192,11 +192,13 @@ function commentBtnClick(){
 
 	<hr class="thick_hr">
 	<div id="site_title">
-		<h2>&nbsp; &nbsp; &nbsp; 대한민국 지진 지도</h2>
+		<h2>&nbsp; &nbsp; &nbsp; 우리나라 지진 지도</h2>
 	</div>
 	<hr class="thick_hr">
-	<h5>&nbsp; &nbsp; ※ 2016년 9월 12일 경주에서 발생한 규모 5.1 지진 이후의 목록은 상세분석 결과이며, 규모 2.0 미만의 지진은 지진목록에서 제외 됨</h5>
-	
+	<div id="notice_div">
+		<h5>&nbsp; &nbsp; ※ 2016년 9월 12일 경주에서 발생한 규모 5.1 지진 이후의 목록은 상세분석 결과이며, 규모 2.0 미만의 지진은 지진목록에서 제외 됨을 알려드립니다.</h5>
+		<h5>&nbsp; &nbsp; ※ 마커와 함께 표시되는 원은 발생 규모(Magnitude)의 크기에 비례하게 표현하였으나, 실제 지진의 영향력과는 다소 거리가 있을 수 있습니다.</h5>
+	</div>
 	<div id="content_wrap">
 		
 		<div id="map">

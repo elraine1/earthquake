@@ -65,7 +65,7 @@ function initMap() {
 	map = new google.maps.Map(document.getElementById('map'), {
 		center: myLatlng,
 		mapTypeId: google.maps.MapTypeId.HYBRID,
-		zoom: 8
+		zoom: 9
 	});
 	
 	var fileName = "2016.txt";
