@@ -13,7 +13,7 @@
 <script>
 $(document).ready(function(){
 	
-	loadNews();
+//	loadNews();
 	$("#footer_div").load("/template/footer.php");
 	
 	$("#showAllMarkers").click(function(){
@@ -274,7 +274,11 @@ function commentBtnClick(){
 					
 			<div id="news_wrap">
 				<h3>&nbsp; 지진 관련 기사</h3><hr>
-				<table id="newsTable"></table>
+				<table id="newsTable">
+				<tr>
+					<td>네이버 뉴스 API의 연결 상태가 좋지 않아 잠시 기능을 정지합니다.</td>
+				</tr>
+				</table>
 			</div>
 			
 			<div id="sns_wrap">
@@ -325,21 +329,21 @@ function commentBtnClick(){
 				<div id="banner_wrap">
 				<table>
 					<tr>
-						<td><a href="http://www.kma.go.kr/weather/earthquake_volcano/report.jsp">
+						<td><a href="http://www.kma.go.kr/weather/earthquake_volcano/report.jsp" target="_blank">
 							<img src='/resources/images/banner/banner_earthquake_kma.gif' width='100px' height='40px'></a></td>
-						<td><a href="https://twitter.com/kma_earthquake"> 
+						<td><a href="https://twitter.com/kma_earthquake" target="_blank"> 
 							<img src='/resources/images/banner/banner_earthquake_twitter.png' width='100px' height='40px'></a></td>
 					</tr>
 					<tr>
-						<td><a href="http://www.safekorea.go.kr/idsiSFK/index.jsp"> 
+						<td><a href="http://www.safekorea.go.kr/idsiSFK/index.jsp" target="_blank"> 
 							<img src='/resources/images/banner/banner_earthquake_NDIC.png' width='100px' height='40px'></a></td>
-						<td><a href="https://quake.kigam.re.kr/"> 
+						<td><a href="https://quake.kigam.re.kr/" target="_blank"> 
 							<img src='/resources/images/banner/banner_earthquake_KERC.png' width='100px' height='40px'></a></td>
 					</tr>
 					<tr>
-						<td><a href="http://gall.dcinside.com/board/lists/?id=jijinhee">
+						<td><a href="http://gall.dcinside.com/board/lists/?id=jijinhee" target="_blank">
 							<img src='/resources/images/banner/banner_earthquake_jijinhee.png' width='100px' height='40px'></a></td>
-						<td><a href="http://www.jma.go.jp/jp/quake/">
+						<td><a href="http://www.jma.go.jp/jp/quake/" target="_blank"> 
 							<img src='/resources/images/banner/banner_earthquake_japan.png' width='100px' height='40px'></a></td>
 					</tr>
 				</table>	
