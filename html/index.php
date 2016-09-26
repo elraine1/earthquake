@@ -5,9 +5,9 @@
 <head>
 <link rel="stylesheet" type="text/css" href="resources/css/mainpage.css">
 <script src="//code.jquery.com/jquery.min.js"></script>	
-<script language="javascript" src="/jquery/jquery-ui.js"></script>
-<script language="javascript" src="/googleMapApi.js"></script>
-<script language="javascript" src="/loadNews.js"></script>
+<script language="javascript" src="jquery/jquery-ui.js"></script>
+<script language="javascript" src="googleMapApi.js"></script>
+<script language="javascript" src="loadNews.js"></script>
 
 <script>
 $(document).ready(function(){
@@ -119,7 +119,7 @@ $(document).ready(function(){
 	});
 	
 	
-	//loadComment();
+	loadComment();
 
 	/*
 	$("").click(function(){
@@ -159,7 +159,7 @@ function loadComment(){
 			fillCommentTable(data);			
 		},
 		error: function(xhr){
-			alert(xhr.requestText);
+			alert('loadComment' . xhr.requestText);
 		}
 	});
 }

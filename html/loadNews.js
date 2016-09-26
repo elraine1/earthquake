@@ -3,14 +3,14 @@ function loadNews(){
 	
 	var newsList = [];
 	var url = "news_proxy.php";
-	$.ajax({		
-		dataType: "xml",
-		type: "POST",
+	$.ajax({
+		dataType: 'text',
+		type: 'POST',
 		async: false,
 		url: url,
 		data: {query:'지진', target:'news', count: 10},
 		success: function(result){
-//			alert(result);
+			alert(result);
 			var xml = $(result);
 			var items = xml.find("item");
 			var newsHtml = "";
@@ -40,7 +40,7 @@ function loadNews(){
 			newsTable.append(newsHtml);
 		},
 		error: function(xhr){
-			alert(xhr.responseText);
+			alert('error' + xhr.responseText);
 		},
 		timeout : 3000
 	});	
