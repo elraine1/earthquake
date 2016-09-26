@@ -145,7 +145,7 @@ a:link{
 	border: 1px solid darkgray;
 	float: left;
 	
-	font-family: "Nanum Gothic", "맑은 고딕", "Malgun Gothic", Georgia, Serif;
+	font-family: Arial;
 	font-size: 13px;
 	overflow: auto;
 }
@@ -175,7 +175,7 @@ a:link{
 	height: 100%;
 	margin: 10px;
 	float: left;
-	font-family: "Nanum Gothic", "맑은 고딕", "Malgun Gothic", Georgia, Serif;
+	font-family: Comic Sans MS;
 	
 	border: 1px solid darkgray;
 }
@@ -215,7 +215,7 @@ a:link{
 #banner_wrap{
 	margin: 10px;
 	float: left;
-	font-family: "Nanum Gothic", "맑은 고딕", "Malgun Gothic", Georgia, Serif;
+	font-family: Arial;
 }
 
 #banner_wrap  td {
@@ -304,11 +304,11 @@ textarea{
 
 td > .commentBtn{
 	width: 60px;
-	height: 20px;
+	height: 24px;
 	padding: 3px 0px ;
 	border-radius: 3px;
 	vertical-align: center;
-	font-family: "Nanum Gothic";
+	font-family: Arial;
 	font-weight: bold;
 	font-size: 11px;
 }

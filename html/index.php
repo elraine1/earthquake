@@ -3,7 +3,6 @@
 <!--meta http-equiv="Content-Type" content="text/html; charset=euc-kr"-->
 <html>
 <head>
-<link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/earlyaccess/nanumgothic.css">
 <link rel="stylesheet" type="text/css" href="resources/css/mainpage.css">
 <script src="//code.jquery.com/jquery.min.js"></script>	
 <script language="javascript" src="/jquery/jquery-ui.js"></script>
@@ -13,7 +12,7 @@
 <script>
 $(document).ready(function(){
 	
-//	loadNews();
+	loadNews();
 	$("#footer_div").load("/template/footer.php");
 	
 	$("#showAllMarkers").click(function(){
@@ -120,22 +119,8 @@ $(document).ready(function(){
 	});
 	
 	
-	var getCommentUrl = "board/comment_get.php";
-	$.ajax({
-		async:false,
-		url: getCommentUrl,
-		type: "POST",
-		data: {count: 30},
-		dataType: 'json',
-		success:function(data){
-			fillCommentTable(data);			
-		},
-		error: function(xhr){
-			alert(xhr.requestText);
-		}
-	})
-	
-	
+	//loadComment();
+
 	/*
 	$("").click(function(){
 		
@@ -162,6 +147,22 @@ function commentContentsVerify(){
 }
 
 
+function loadComment(){
+	var getCommentUrl = "board/comment_get.php";
+	$.ajax({
+		async:false,
+		url: getCommentUrl,
+		type: "POST",
+		data: {count: 30},
+		dataType: 'json',
+		success:function(data){
+			fillCommentTable(data);			
+		},
+		error: function(xhr){
+			alert(xhr.requestText);
+		}
+	});
+}
 
 function fillCommentTable(comments){
 	var comment_table = $("#comment_table");
@@ -181,20 +182,34 @@ function commentBtnClick(){
 	alert('아직은 기능이 없어요!');
 }
 
+
+
 </script>
 </head>
 
 <body>
 	<?php
-		$mylib_path = $_SERVER['DOCUMENT_ROOT'] . '/../includes/mylib.php';
+		$root_path = $_SERVER['DOCUMENT_ROOT'];
+		$mylib_path = $root_path . '/../includes/mylib.php';
 		require_once($mylib_path);
+		
+		
 	?>
-
-	<hr class="thick_hr">
-	<div id="site_title">
-		<h2>&nbsp; &nbsp; &nbsp; 우리나라 지진 지도</h2>
-	</div>
-	<hr class="thick_hr">
+	<header>
+		<hr class="thick_hr">
+		<div id="site_title">
+			<h2>&nbsp; &nbsp; &nbsp; 우리나라 지진 지도</h2>
+		</div>
+		<hr class="thick_hr">
+		
+		<div id="menubar">
+			<ul id="menu">
+				<li><a href="<?php $root_path ?>/index.php">지진지도</a></li>
+				<li><a href="<?php $root_path ?>/voice/voice_test.php">음성합성(공사중, test version)</a></li>
+			</ul>
+		</div>
+	</header>
+	
 	<div id="notice_div">
 		<h5>&nbsp; &nbsp; ※ 2016년 9월 12일 경주에서 발생한 규모 5.1 지진 이후의 목록은 상세분석 결과이며, 규모 2.0 미만의 지진은 지진목록에서 제외 됨을 알려드립니다.</h5>
 		<h5>&nbsp; &nbsp; ※ 마커와 함께 표시되는 원은 발생 규모(Magnitude)의 크기에 비례하게 표현하였으나, 실제 지진의 영향력과는 다소 거리가 있을 수 있습니다.</h5>
@@ -330,7 +345,7 @@ function commentBtnClick(){
 				<table>
 					<tr>
 						<td><a href="http://www.kma.go.kr/weather/earthquake_volcano/report.jsp" target="_blank">
-							<img src='/resources/images/banner/banner_earthquake_kma.gif' width='100px' height='40px'></a></td>
+							<img src='/resources/images/banner/banner_earthquake_kma.png' width='100px' height='40px'></a></td>
 						<td><a href="https://twitter.com/kma_earthquake" target="_blank"> 
 							<img src='/resources/images/banner/banner_earthquake_twitter.png' width='100px' height='40px'></a></td>
 					</tr>

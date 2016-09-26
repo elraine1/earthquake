@@ -17,11 +17,12 @@ class NaverProxy {
 		curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
 		// 함수 실행 성공 시, string 타입으로 데이터를 읽어오고 실패시 false 를 리턴한다. 
 		curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
+		curl_setopt($ch,CURLOPT_CONNECTTIMEOUT ,10);
+		curl_setopt($ch,CURLOPT_TIMEOUT, 20);
 
 		$headers = array();
 		$headers[] = "X-Naver-Client-Id: " . $client_id;
 		$headers[] = "X-Naver-Client-Secret: " . $client_secret;
-
 		curl_setopt($ch, CURLOPT_HTTPHEADER, $headers);
 
 		$data = curl_exec ($ch);
