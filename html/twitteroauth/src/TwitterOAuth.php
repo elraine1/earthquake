@@ -5,7 +5,9 @@
  * @license MIT
  */
 namespace Abraham\TwitterOAuth;
+
 use Abraham\TwitterOAuth\Util\JsonDecoder;
+
 /**
  * TwitterOAuth class for interacting with the Twitter API.
  *
@@ -17,6 +19,7 @@ class TwitterOAuth extends Config
     const API_HOST = 'https://api.twitter.com';
     const UPLOAD_HOST = 'https://upload.twitter.com';
     const UPLOAD_CHUNK = 40960; // 1024 * 40
+
     /** @var Response details about the result of the last request */
     private $response;
     /** @var string|null Application bearer token */
@@ -27,6 +30,7 @@ class TwitterOAuth extends Config
     private $token;
     /** @var HmacSha1 OAuth 1 signature type used by Twitter */
     private $signatureMethod;
+
     /**
      * Constructor
      *
@@ -47,6 +51,7 @@ class TwitterOAuth extends Config
             $this->bearer = $oauthTokenSecret;
         }
     }
+
     /**
      * @param string $oauthToken
      * @param string $oauthTokenSecret
@@ -55,6 +60,7 @@ class TwitterOAuth extends Config
     {
         $this->token = new Token($oauthToken, $oauthTokenSecret);
     }
+
     /**
      * @return string|null
      */
@@ -62,6 +68,7 @@ class TwitterOAuth extends Config
     {
         return $this->response->getApiPath();
     }
+
     /**
      * @return int
      */
@@ -69,6 +76,7 @@ class TwitterOAuth extends Config
     {
         return $this->response->getHttpCode();
     }
+
     /**
      * @return array
      */
@@ -76,6 +84,7 @@ class TwitterOAuth extends Config
     {
         return $this->response->getXHeaders();
     }
+
     /**
      * @return array|object|null
      */
@@ -83,6 +92,7 @@ class TwitterOAuth extends Config
     {
         return $this->response->getBody();
     }
+
     /**
      * Resets the last response cache.
      */
@@ -90,6 +100,7 @@ class TwitterOAuth extends Config
     {
         $this->response = new Response();
     }
+
     /**
      * Make URLs for user browser navigation.
      *
@@ -105,6 +116,7 @@ class TwitterOAuth extends Config
         $query = http_build_query($parameters);
         return sprintf('%s/%s?%s', self::API_HOST, $path, $query);
     }
+
     /**
      * Make /oauth/* requests to the API.
      *
@@ -121,13 +133,17 @@ class TwitterOAuth extends Config
         $this->response->setApiPath($path);
         $url = sprintf('%s/%s', self::API_HOST, $path);
         $result = $this->oAuthRequest($url, 'POST', $parameters);
+
         if ($this->getLastHttpCode() != 200) {
             throw new TwitterOAuthException($result);
         }
+
         parse_str($result, $response);
         $this->response->setBody($response);
+
         return $response;
     }
+
     /**
      * Make /oauth2/* requests to the API.
      *
@@ -149,6 +165,7 @@ class TwitterOAuth extends Config
         $this->response->setBody($response);
         return $response;
     }
+
     /**
      * Make GET requests to the API.
      *
@@ -161,6 +178,7 @@ class TwitterOAuth extends Config
     {
         return $this->http('GET', self::API_HOST, $path, $parameters);
     }
+
     /**
      * Make POST requests to the API.
      *
@@ -173,6 +191,7 @@ class TwitterOAuth extends Config
     {
         return $this->http('POST', self::API_HOST, $path, $parameters);
     }
+
     /**
      * Make DELETE requests to the API.
      *
@@ -185,6 +204,7 @@ class TwitterOAuth extends Config
     {
         return $this->http('DELETE', self::API_HOST, $path, $parameters);
     }
+
     /**
      * Make PUT requests to the API.
      *
@@ -197,6 +217,7 @@ class TwitterOAuth extends Config
     {
         return $this->http('PUT', self::API_HOST, $path, $parameters);
     }
+
     /**
      * Upload media to upload.twitter.com.
      *
@@ -214,6 +235,7 @@ class TwitterOAuth extends Config
             return $this->uploadMediaNotChunked($path, $parameters);
         }
     }
+
     /**
      * Private method to upload media (not chunked) to upload.twitter.com.
      *
@@ -229,6 +251,7 @@ class TwitterOAuth extends Config
         $parameters['media'] = $base;
         return $this->http('POST', self::UPLOAD_HOST, $path, $parameters);
     }
+
     /**
      * Private method to upload media (chunked) to upload.twitter.com.
      *
@@ -265,6 +288,7 @@ class TwitterOAuth extends Config
         ]);
         return $finalize;
     }
+
     /**
      * @param string $method
      * @param string $host
@@ -283,6 +307,7 @@ class TwitterOAuth extends Config
         $this->response->setBody($response);
         return $response;
     }
+
     /**
      * Format and sign an OAuth / API request
      *
@@ -308,6 +333,7 @@ class TwitterOAuth extends Config
         }
         return $this->request($request->getNormalizedHttpUrl(), $method, $authorization, $parameters);
     }
+
     /**
      * Make an HTTP request
      *
@@ -335,9 +361,11 @@ class TwitterOAuth extends Config
             CURLOPT_URL => $url,
             CURLOPT_USERAGENT => $this->userAgent,
         ];
+
         if($this->gzipEncoding) {
             $options[CURLOPT_ENCODING] = 'gzip';
         }
+
         if (!empty($this->proxy)) {
             $options[CURLOPT_PROXY] = $this->proxy['CURLOPT_PROXY'];
             $options[CURLOPT_PROXYUSERPWD] = $this->proxy['CURLOPT_PROXYUSERPWD'];
@@ -345,6 +373,7 @@ class TwitterOAuth extends Config
             $options[CURLOPT_PROXYAUTH] = CURLAUTH_BASIC;
             $options[CURLOPT_PROXYTYPE] = CURLPROXY_HTTP;
         }
+
         switch ($method) {
             case 'GET':
                 break;
@@ -359,24 +388,32 @@ class TwitterOAuth extends Config
                 $options[CURLOPT_CUSTOMREQUEST] = 'PUT';
                 break;
         }
+
         if (in_array($method, ['GET', 'PUT', 'DELETE']) && !empty($postfields)) {
             $options[CURLOPT_URL] .= '?' . Util::buildHttpQuery($postfields);
         }
+
+
         $curlHandle = curl_init();
         curl_setopt_array($curlHandle, $options);
         $response = curl_exec($curlHandle);
+
         // Throw exceptions on cURL errors.
         if (curl_errno($curlHandle) > 0) {
             throw new TwitterOAuthException(curl_error($curlHandle), curl_errno($curlHandle));
         }
+
         $this->response->setHttpCode(curl_getinfo($curlHandle, CURLINFO_HTTP_CODE));
         $parts = explode("\r\n\r\n", $response);
         $responseBody = array_pop($parts);
         $responseHeader = array_pop($parts);
         $this->response->setHeaders($this->parseHeaders($responseHeader));
+
         curl_close($curlHandle);
+
         return $responseBody;
     }
+
     /**
      * Get the header info to store.
      *
@@ -396,6 +433,7 @@ class TwitterOAuth extends Config
         }
         return $headers;
     }
+
     /**
      * Encode application authorization header with base64.
      *
