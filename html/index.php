@@ -12,7 +12,7 @@
 <script>
 $(document).ready(function(){
 	
-	loadNews();
+	//loadNews();
 	$("#footer_div").load("/template/footer.php");
 	
 	$("#showAllMarkers").click(function(){
